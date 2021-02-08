@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
   private
   def check_uuid
     return invalid_params if params['source_uuid'].nil? || params['post_raw_data'].nil?
-    return unauthorized unless ENV['UUIDS'].include?(params['source_uuid'])
+    return unauthorized unless ENV['UUIDS'].split(',').include?(params['source_uuid'])
   end
 
   def invalid_params
