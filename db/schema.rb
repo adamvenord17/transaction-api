@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_085939) do
   create_table "requests", force: :cascade do |t|
     t.string "bk_organization_id"
     t.string "source_uuid"
-    t.integer "transactions_summerized_count"
+    t.integer "transactions_summarized_count"
     t.float "summarized_net_sales"
     t.string "journal_entry_template"
     t.text "json_diff"
