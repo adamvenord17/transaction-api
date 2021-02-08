@@ -3,12 +3,9 @@ class RequestsController < ApplicationController
   def create
     request = Request.find_by(source_uuid: params['source_uuid'])
     if request.present?
-      p '-------request present?'
       request.update(request_params)
     else
-      p '-------else request present?'
-      request = request.create(request_params)
-      p requeest.errors.messages
+      request = Request.create(request_params)
     end
     render json: {data: request.as_json, status: 200}
   end
