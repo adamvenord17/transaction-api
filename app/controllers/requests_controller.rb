@@ -16,8 +16,9 @@ class RequestsController < ApplicationController
 
   private
   def check_uuid
+    api_key = request.headers['HTTP_AUTHORIZATION']
+    return unauthorized unless uuid_keys.include?(api_key)
     return invalid_params if params['source_uuid'].nil? || params['post_raw_data'].nil?
-    return unauthorized unless uuid_keys.include?(params['source_uuid'])
   end
 
   def uuid_keys
